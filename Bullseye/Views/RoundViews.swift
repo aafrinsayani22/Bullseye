@@ -38,25 +38,24 @@ struct RoundedImageViewFilled: View {
 
 
 struct RoundedRectTextView: View {
-    var title: String
-    var score: Int
+    var text: String
 
     var body: some View {
-        VStack(spacing: 5) {
-            LabelText(text: title.uppercased())
+
         
-            ZStack {
+        Text(text)
+       
+            .kerning(-0.2)
+            .bold()
+            .font(.title3)
+            .frame(width: 68.0, height: 56.0)
+            .foregroundColor(Color("textColor"))
+            .overlay(
                 RoundedRectangle(cornerRadius: 21.0)
-                    .strokeBorder(Color("ButtonStrokeColor"), lineWidth: 2.0, antialiased: true)
-                    .frame(width: 68.0, height: 55.78, alignment: .center)
-//                game.points(slidervalue: 27)
-//                    .fontWeight(.bold)
-//                    .font(.title2)
-//                    .kerning(-0.2)
-//                    .foregroundColor(Color("textColor"))
-            }
-        }
-               
+                    .stroke(lineWidth: 2.0)
+                    .foregroundColor(Color("ButtonStrokeColor"))
+            )
+//
         }
 }
 
@@ -64,17 +63,9 @@ struct PreviewView: View {
     var body: some View {
         
         VStack {
-            HStack(spacing: 10.0) {
-                RoundedImageViewStroked(systemName: "arrow.counterclockwise")
-                Spacer()
-                RoundedImageViewFilled(systemName: "list.dash")
-               
-            }
-            HStack {
-                RoundedRectTextView(title: "Score", score: 78)
-                Spacer()
-                RoundedRectTextView(title: "Round", score: 65)
-            }
+            RoundedImageViewStroked(systemName: "arrowcounterclockwise")
+            RoundedImageViewFilled(systemName: "list.dash")
+            RoundedRectTextView(text: "1")
             
         }
   

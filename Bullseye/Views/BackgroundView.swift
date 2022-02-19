@@ -30,6 +30,7 @@ struct TopView: View {
                 game.restart()
             }) {
                 RoundedImageViewStroked(systemName: "arrow.counterclockwise")
+                    .foregroundColor(Color("textColor"))
             }
             
             Spacer()
@@ -39,6 +40,17 @@ struct TopView: View {
     }
 }
 
+struct NumberView: View {
+    var title: String
+    var text: String
+
+    var body: some View {
+        VStack(spacing: 5) {
+            LabelText(text: title.uppercased())
+            RoundedRectTextView(text: text)
+        }
+    }
+}
 
 
 
@@ -46,9 +58,9 @@ struct BottomView: View {
     @Binding var game: Game
     var body: some View {
         HStack() {
-            RoundedRectTextView(title: "Score", score: game.score)
+            NumberView(title: "Score", text: String(game.score))
             Spacer()
-            RoundedRectTextView(title: "Round", score: game.round)
+            NumberView(title: "Round", text: String(game.round))
                
         }
     }
@@ -59,5 +71,6 @@ struct BottomView: View {
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
         BackgroundView(game: .constant(Game()))
+            .preferredColorScheme(.dark)
     }
 }
