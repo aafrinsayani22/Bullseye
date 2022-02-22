@@ -9,14 +9,23 @@ import SwiftUI
 
 struct LeaderBoardView: View {
     @Binding var leaderBoardIsShowing : Bool
+    @Binding var game: Game
     var body: some View {
         ZStack {
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
-            VStack(spacing : 10) {
-                HeaderView(leaderBoardIsShowing: $leaderBoardIsShowing)
-                LabelView()
-                RowViewView(index: 1, score: 10, date: Date())
+            ScrollView {
+                VStack(spacing : 10) {
+                    HeaderView(leaderBoardIsShowing: $leaderBoardIsShowing)
+                    LabelView()
+                    VStack(spacing: 10) {
+                        ForEach( game.leaderBoardEntries.indices) {i in
+                            let leaderBoardEntry = game.leaderBoardEntries[i]
+                            RowViewView(index: i+1, score: leaderBoardEntry.score, date: leaderBoardEntry.date)
+                            
+                        }
+                    }
+                }
             }
         }
     }
@@ -41,6 +50,8 @@ struct HeaderView: View {
                     
                 }
             }
+            .padding()
+            .padding(.top)
             HStack {
                 Spacer()
                 
@@ -84,7 +95,7 @@ struct RowViewView: View {
         HStack {
             RoundedTextView(text: String(index))
             Spacer()
-            ScoreText(score: 459)
+            ScoreText(score: score)
                 .frame(width: Constants.LeaderBoard.leaderBoardScoreColWidth)
             Spacer()
             DateText(date: Date())
@@ -104,13 +115,15 @@ struct RowViewView: View {
 
 struct LeaderBoardView_Previews: PreviewProvider {
     static private var leaderBoardIsShowing = Binding.constant(false)
+    static private var game = Binding.constant(Game(loadTestData: true))
     static var previews: some View {
-        LeaderBoardView(leaderBoardIsShowing: leaderBoardIsShowing)
-        LeaderBoardView(leaderBoardIsShowing: leaderBoardIsShowing)
+        LeaderBoardView(leaderBoardIsShowing: leaderBoardIsShowing, game: game )
+
+        LeaderBoardView(leaderBoardIsShowing: leaderBoardIsShowing,  game: game )
             .previewLayout(.fixed(width: 568, height: 320))
-        LeaderBoardView(leaderBoardIsShowing: leaderBoardIsShowing)
+        LeaderBoardView(leaderBoardIsShowing: leaderBoardIsShowing, game: game )
             .preferredColorScheme(.dark)
-        LeaderBoardView(leaderBoardIsShowing: leaderBoardIsShowing)
+        LeaderBoardView(leaderBoardIsShowing: leaderBoardIsShowing, game: game )
                 .preferredColorScheme(.dark)
                 .previewLayout(.fixed(width: 568, height: 320))
     }

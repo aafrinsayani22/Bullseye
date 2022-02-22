@@ -10,9 +10,7 @@ import Foundation
 struct LeaderBoardEntry {
     let score: Int
     let date: Date
-    
-    
-    
+     
 }
 struct Game{
     
@@ -21,7 +19,23 @@ struct Game{
     var round = 1
     var leaderBoardEntries : [LeaderBoardEntry] = []
     
-    
+    init(loadTestData: Bool = false) {
+        
+        if loadTestData == true {
+            leaderBoardEntries.append(LeaderBoardEntry(score: 100, date: Date()))
+            leaderBoardEntries.append(LeaderBoardEntry(score: 200, date: Date()))
+            leaderBoardEntries.append(LeaderBoardEntry(score: 700, date: Date()))
+            leaderBoardEntries.append(LeaderBoardEntry(score: 70, date: Date()))
+            leaderBoardEntries.append(LeaderBoardEntry(score: 89, date: Date()))
+            leaderBoardEntries.append(LeaderBoardEntry(score: 99, date: Date()))
+            leaderBoardEntries.append(LeaderBoardEntry(score: 78, date: Date()))
+            leaderBoardEntries.append(LeaderBoardEntry(score: 50, date: Date()))
+        }
+        else {
+            
+        }
+        
+    }
     
     
     
