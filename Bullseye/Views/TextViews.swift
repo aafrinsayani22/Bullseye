@@ -11,7 +11,7 @@ struct InstructionText: View {
     var text: String
     
     var body: some View {
-        Text(text)
+        Text(text.uppercased())
             .foregroundColor(Color("textColor"))
             .bold()
             .kerning(2.0)
@@ -58,16 +58,48 @@ struct LabelText: View {
     }
 }
 
+struct BodyText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .bold()
+            .font(.subheadline)
+            .fontWeight(.semibold)
+            .multilineTextAlignment(.center)
+            
+            .lineSpacing(12)
+    }
+}
+
+struct ButtonText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .bold()
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color.accentColor)
+            .foregroundColor(.white)
+            .cornerRadius(20)
+    }
+        
+}
+
 
 struct TextViews_Previews: PreviewProvider {
 
     static var previews: some View {
-        VStack {
+        VStack(alignment: .center, spacing: 10) {
             InstructionText(text: "🎯🎯🎯\nPUT THE BULLS EYE AS CLOSE AS YOU CAN TO.")
             BigNumberText(text: "999")
             SliderLabelText(text: "99")
             LabelText(text: "Score".uppercased())
+            BodyText(text: "You Scored 73 Points\n 🎉🎉🎉")
+            ButtonText(text: "Start New Round")
         }
+        .padding()
         
     }
 }

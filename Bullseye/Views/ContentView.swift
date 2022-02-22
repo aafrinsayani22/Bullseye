@@ -15,14 +15,33 @@ struct ContentView: View {
     
     
     var body: some View {
+        
+        
         ZStack {
             BackgroundView(game: $game)
             VStack {
                 InstructionView(game: $game)
-                SliderView(sliderValue: $sliderValue)
-                HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                    .padding(.bottom, alertIsVisible ? 0 : 100)
+                if alertIsVisible {
+                    PointsView(alertIsVisible:  $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                        .transition(.scale)
+                }
+                else {
+                    HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                        .transition(.scale)
+
+                }
+                
                 
             }
+            if !alertIsVisible {
+                SliderView(sliderValue: $sliderValue)
+                    .transition(.scale)
+
+            }
+            
+            
+
         }
     }
     
@@ -75,10 +94,10 @@ struct HitMeButton: View {
     
     var body: some View {
         Button(action: {
-            print("\(Int(sliderValue.rounded()))")
-    
-            self.alertIsVisible = true
-            game.startNewRound(points: game.points(slidervalue: Int(sliderValue)))
+            withAnimation{
+                alertIsVisible = true
+                
+            }
         }) {
             Text("Hit me".uppercased())
                 .font(.title3)
@@ -95,12 +114,6 @@ struct HitMeButton: View {
         .cornerRadius(21)
         .overlay(RoundedRectangle(cornerRadius: 21.0)
                     .strokeBorder(Color.white, lineWidth: 2.0, antialiased: true))
-        .alert(isPresented: $alertIsVisible, content: {
-            
-            
-//            let roundedValue = Int(sliderValue.rounded())
-            
-            return Alert(title: Text("Hello, there!"), message: Text("The slider value is \(sliderValue)\n" + "You scored \(game.points(slidervalue: Int(sliderValue.rounded()))) points in this round."), dismissButton: .default(Text("Awesome!")))
-        })
+        
     }
 }

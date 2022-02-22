@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AA4D51B42774EA0100475B67 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4D51B32774EA0100475B67 /* Game.swift */; };
 		AA4D51B6277623F600475B67 /* TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4D51B5277623F600475B67 /* TextViews.swift */; };
+		AA4F15B627C4439200ACF261 /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4F15B527C4439200ACF261 /* PointsView.swift */; };
 		AAD86C9B2721D0030052057F /* BullseyeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD86C9A2721D0030052057F /* BullseyeApp.swift */; };
 		AAD86C9D2721D0030052057F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD86C9C2721D0030052057F /* ContentView.swift */; };
 		AAD86C9F2721D0050052057F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD86C9E2721D0050052057F /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		AA4D51B32774EA0100475B67 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		AA4D51B5277623F600475B67 /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
+		AA4F15B527C4439200ACF261 /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 		AAD86C972721D0030052057F /* Bullseye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bullseye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD86C9A2721D0030052057F /* BullseyeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullseyeApp.swift; sourceTree = "<group>"; };
 		AAD86C9C2721D0030052057F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				AA4D51B5277623F600475B67 /* TextViews.swift */,
 				AAEC70D9277B9E6A0030C7B9 /* RoundViews.swift */,
 				AAEC70DB277BBC090030C7B9 /* BackgroundView.swift */,
+				AA4F15B527C4439200ACF261 /* PointsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAEC70DC277BBC090030C7B9 /* BackgroundView.swift in Sources */,
+				AA4F15B627C4439200ACF261 /* PointsView.swift in Sources */,
 				AAD86C9D2721D0030052057F /* ContentView.swift in Sources */,
 				AA4D51B6277623F600475B67 /* TextViews.swift in Sources */,
 				AAEC70DA277B9E6A0030C7B9 /* RoundViews.swift in Sources */,
